@@ -13,21 +13,21 @@ The welcome
 The Restaurant List P
 The menu list for the selected restaurant
 
-##Welcome
+## Welcome
 Is the first page displayed for the users logging in.
 <div>
 <img src='screenshots/welcome.png' width = 150 height = 300>&nbsp; &nbsp;
 </div>
 
 
-##List of Restaurants
+## List of Restaurants
 Will display the list of restaurants avalible to deliever. 
 <div>
 <img src='screenshots/restaurant.png' width = 150 height = 300>&nbsp; &nbsp;
 </div>
 
 
-##Menu List
+## Menu List
 Will display the list of menu for the restaurant selected.
 
 <div>
