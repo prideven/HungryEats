@@ -34,3 +34,6 @@ Will display the list of menu for the restaurant selected.
 <img src='screenshots/menu.png' width = 150 height = 300>&nbsp; &nbsp;
 </div>
 
+
+## Demo Video
+(https://www.youtube.com/watch?v=Z59qJvDN-Yk&ab_channel=PriyankaDevendran)
