@@ -1,4 +1,4 @@
-package com.example.android.coffeeapp;
+package com.prideven.android.HungryEats;
 
 import android.util.Log;
 import android.view.LayoutInflater;
