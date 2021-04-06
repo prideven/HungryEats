@@ -1,4 +1,4 @@
-package com.prideven.android.HungryEats;
+package com.prideven.android.hungryeats;
 
 import android.view.View;
 import android.widget.ImageView;

@@ -1,4 +1,4 @@
-package com.prideven.android.HungryEats
+package com.prideven.android.hungryeats
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

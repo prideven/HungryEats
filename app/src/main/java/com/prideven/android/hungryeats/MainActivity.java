@@ -1,4 +1,4 @@
-package com.prideven.android.HungryEats;
+package com.prideven.android.hungryeats;
 
 import android.content.Intent;
 import android.os.Bundle;
