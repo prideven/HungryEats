@@ -1,4 +1,4 @@
-package com.prideven.android.HungryEats;
+package com.prideven.android.hungryeats;
 
 import android.os.Bundle;
 
@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import java.lang.reflect.Type;
 import java.util.List;
 
+
 public class RestaurantActivity extends AppCompatActivity {
 
     @Override
@@ -19,16 +20,16 @@ public class RestaurantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mcd_items);
 
-        RecyclerView rv = findViewById(R.id.items);
-        CustomAdapter ca = new CustomAdapter(dataSet());
+        RecyclerView rv = findViewById(R.id.menu_items);
+        com.prideven.android.hungryeats.CustomAdapter ca = new com.prideven.android.hungryeats.CustomAdapter(dataSet());
         rv.setAdapter(ca);
         rv.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public List<MenuItem> dataSet() {
+    public List<com.prideven.android.hungryeats.MenuItem> dataSet() {
         Gson gson = new Gson();
 
-        Root root = gson.fromJson(menuItemData, (Type) Root.class);
+        com.prideven.android.hungryeats.Root root = gson.fromJson(menuItemData, (Type) com.prideven.android.hungryeats.Root.class);
         return root.menu_item;
     }
 

@@ -1,4 +1,4 @@
-package com.prideven.android.HungryEats;
+package com.prideven.android.hungryeats;
 
 
 // import com.fasterxml.jackson.databind.ObjectMapper; // version 2.11.1

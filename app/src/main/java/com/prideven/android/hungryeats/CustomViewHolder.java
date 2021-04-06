@@ -1,4 +1,4 @@
-package com.prideven.android.HungryEats;
+package com.prideven.android.hungryeats;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -14,7 +14,7 @@ public class CustomViewHolder extends RecyclerView.ViewHolder {
         super(v);
     }
 
-    public void setData(MenuItem menuItem) {
+    public void setData(com.prideven.android.hungryeats.MenuItem menuItem) {
 
         TextView  cal = itemView.findViewById(R.id.cal);
         TextView price =itemView.findViewById(R.id.price);
