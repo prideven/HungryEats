@@ -4,5 +4,5 @@ import java.util.List;
 
 public class Root{
 
-    public List<MenuItem> menu_item;
+    public List<com.prideven.android.hungryeats.MenuItem> menu_item;
 }
