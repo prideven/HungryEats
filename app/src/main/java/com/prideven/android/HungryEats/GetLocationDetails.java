@@ -17,9 +17,7 @@ public class GetLocationDetails {
 
         private static final String TAG = "GeocodingLocation";
 
-
-
-    public static void getAddressFromLocation(final String locationAddress,
+        public static void getAddressFromLocation(final String locationAddress,
                                                   final Context context, final Handler handler) {
             Thread thread = new Thread() {
                 @Override
@@ -27,12 +25,11 @@ public class GetLocationDetails {
                     Geocoder geocoder = new Geocoder(context, Locale.getDefault());
                     String result = null;
                     try {
-                        List addressList = geocoder.getFromLocationName(locationAddress, 1);
+                        List
+                                addressList = geocoder.getFromLocationName(locationAddress, 1);
                         if (addressList != null && addressList.size() > 0) {
                             Address address = (Address) addressList.get(0);
                             StringBuilder sb = new StringBuilder();
-                            double lat = address.getLatitude();
-                            double lng = address.getLatitude();
                             sb.append(address.getLatitude()).append("\n");
                             sb.append(address.getLongitude()).append("\n");
                             result = sb.toString();
@@ -49,8 +46,6 @@ public class GetLocationDetails {
                                     "\n\nLatitude and Longitude :\n" + result;
                             bundle.putString("address", result);
                             message.setData(bundle);
-
-
                         } else {
                             message.what = 1;
                             Bundle bundle = new Bundle();
