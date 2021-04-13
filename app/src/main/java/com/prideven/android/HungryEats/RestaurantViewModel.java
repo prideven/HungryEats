@@ -5,13 +5,12 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class RestaurantViewModel extends ViewModel {
 
@@ -31,6 +30,14 @@ public class RestaurantViewModel extends ViewModel {
         return eatsRestaurantResponse;
     }
 
+
+    public void fetchRestaurantList(Callback<EatsRestaurantsResponse> responseCallback, double lat, double lng) {
+        Retrofit retrofit=hungryEatsApplication.getRetrofitInstance();
+        EatsRestaurantWebService eatsRestaurantsWebService = retrofit.create(EatsRestaurantWebService.class);
+        Call<EatsRestaurantsResponse> call = eatsRestaurantsWebService.getRestaurants(lat,lng);
+        call.enqueue(responseCallback);
+    }
+
     public void callRestaurantDataRepo(double lat,double lng) {
 
         Callback<EatsRestaurantsResponse> object = new Callback<EatsRestaurantsResponse>() {
@@ -45,7 +52,7 @@ public class RestaurantViewModel extends ViewModel {
                 Log.e(TAG, throwable.toString());
             }
         };
-        hungryEatsApplication.fetchRestaurantList(object,lat,lng);
+        fetchRestaurantList(object,lat,lng);
     }
 }
 

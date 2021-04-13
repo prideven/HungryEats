@@ -4,8 +4,6 @@ import android.app.Application;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -18,7 +16,6 @@ public class HungryEatsApplication extends Application {
     private static HungryEatsApplication restaurantDataRepository = null;
 
 
-
     private HungryEatsApplication() {
         //Singleton instance created for the class
     }
@@ -29,7 +26,7 @@ public class HungryEatsApplication extends Application {
         return restaurantDataRepository;
     }
 
-    public void fetchRestaurantList(Callback<EatsRestaurantsResponse> responseCallback, double lat, double lng) {
+    public Retrofit getRetrofitInstance() {
 
         if (retrofit == null) {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
@@ -43,12 +40,15 @@ public class HungryEatsApplication extends Application {
                     .client(httpClient.build())
                     .build();
         }
-
-        EatsRestaurantWebService eatsRestaurantsWebService = retrofit.create(EatsRestaurantWebService.class);
-        Call<EatsRestaurantsResponse> call = eatsRestaurantsWebService.getRestaurants(lat,lng);
-        call.enqueue(responseCallback);
+        return retrofit;
     }
 
+
 }
+//
+//        EatsRestaurantWebService eatsRestaurantsWebService = retrofit.create(EatsRestaurantWebService.class);
+//        Call<EatsRestaurantsResponse> call = eatsRestaurantsWebService.getRestaurants(lat,lng);
+//        call.enqueue(responseCallback);
+
 
 
