@@ -18,7 +18,7 @@ public class RestaurantActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mcd_items);
+        setContentView(R.layout.menu_items);
 
         RecyclerView rv = findViewById(R.id.menu_items);
         com.prideven.android.hungryeats.CustomAdapter ca = new com.prideven.android.hungryeats.CustomAdapter(dataSet());
