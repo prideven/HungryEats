@@ -1,8 +1,10 @@
 package com.prideven.android.hungryeats;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.prideven.android.hungryeats.menuitems.MenuFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
+                    .replace(R.id.container, MenuFragment.newInstance())
                     .commitNow();
         }
     }
