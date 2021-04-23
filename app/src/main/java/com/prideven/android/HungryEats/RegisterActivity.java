@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-                                    startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                                    startActivity(new Intent(getApplicationContext(), LoginAndRegisterActivity.class));
                                     finish();
                                 }
                                 else{
@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginAndRegisterActivity.class));
             }
         });
 

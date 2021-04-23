@@ -49,7 +49,7 @@
 
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/add_image"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_alignParentRight="true"

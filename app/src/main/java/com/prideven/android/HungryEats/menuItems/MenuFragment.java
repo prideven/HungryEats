@@ -26,14 +26,27 @@ import java.util.List;
 public class MenuFragment extends Fragment {
 
     private MenuViewModel mViewModel;
-    public MenuFragmentBinding mBinding;
+    private MenuFragmentBinding mBinding;
     public MenuAdapter ma;
     private RecyclerView rv;
-    public int id=10;
+    public int id;
+    public static final String RESTAURANT_ID = "restaurantIndex";
+
+    private String restaurantName;
     private MutableLiveData<EatsMenuResponse> eatsMenuResponse;
 
-    public static MenuFragment newInstance() {
-        return new MenuFragment();
+    public static MenuFragment newInstance(int id) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(RESTAURANT_ID, id);
+        MenuFragment menuFragment = new MenuFragment();
+        menuFragment.setArguments(bundle);
+        return menuFragment;
+    }
+
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -45,6 +58,7 @@ public class MenuFragment extends Fragment {
         rv.setAdapter(ma);
         rv.setLayoutManager(new LinearLayoutManager(requireContext()));
         return mBinding.getRoot();
+
     }
 
     @Override
@@ -54,13 +68,18 @@ public class MenuFragment extends Fragment {
 
         // CharSequence zipCode = mBinding.searchZip.getQuery();
         //mViewModel.callRestaurantDataRepo(Integer.parseInt(zipCode.toString()));
+        if(getArguments() != null) {
+            id = getArguments().getInt(RESTAURANT_ID, -1);
+        }
         mViewModel.callMenuDataRepo(id);
 
 
-        mViewModel.getMenuDetails().observe(getViewLifecycleOwner(), listOfMenu ->{
+        mViewModel.getMenuDetails().observe(getViewLifecycleOwner(), listOfMenu -> {
             mBinding.menuDescription.setText(listOfMenu.getDescription());
-            mBinding.rating.setText("Rating: "+listOfMenu.getAverage_rating());
-            mBinding.restaurntName.setText(listOfMenu.getName());
+            mBinding.rating.setText("Rating: " + listOfMenu.getAverage_rating());
+            restaurantName=listOfMenu.getName();
+            mBinding.restaurntName.setText(restaurantName);
+            getActivity().setTitle(restaurantName);
             Glide.with(mBinding.getRoot().getContext())
                     .load(listOfMenu.getCover_img_url())
                     .centerCrop()
@@ -132,5 +151,6 @@ public class MenuFragment extends Fragment {
             "  ]\n" +
             "}\n" +
             "\n";
+
 }
 

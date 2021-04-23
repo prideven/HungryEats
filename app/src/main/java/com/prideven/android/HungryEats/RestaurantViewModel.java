@@ -15,10 +15,7 @@ import retrofit2.Retrofit;
 public class RestaurantViewModel extends ViewModel {
 
     static final String TAG = RestaurantViewModel.class.getSimpleName();
-
-
     HungryEatsApplication hungryEatsApplication = HungryEatsApplication.getInstance();
-
 
     // Create a LiveData with a String
     private MutableLiveData<List<EatsRestaurantsResponseItem>> eatsRestaurantResponse;
