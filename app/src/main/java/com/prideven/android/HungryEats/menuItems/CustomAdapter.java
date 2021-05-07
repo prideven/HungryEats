@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.prideven.android.hungryeats.CustomViewHolder;
+import com.prideven.android.hungryeats.GetCartValuesListener;
 import com.prideven.android.hungryeats.MenuItem;
 import com.prideven.android.hungryeats.R;
 
@@ -18,9 +18,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
     private static final String TAG = "CustomAdapter";
 
     List<MenuItem> items = new ArrayList<>();
+    GetCartValuesListener getCartValuesListener;
 
-    public CustomAdapter(List<MenuItem> dataSet) {
+    public CustomAdapter(List<MenuItem> dataSet,GetCartValuesListener getCartValuesListener) {
         this.items = dataSet;
+        this.getCartValuesListener=getCartValuesListener;
     }
 
     @Override
@@ -37,7 +39,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
         Log.d(TAG, "Element " + position + " set.");
 
 
-        viewHolder.setData(items.get(position));
+        viewHolder.setData(items.get(position),getCartValuesListener);
     }
 
     @Override

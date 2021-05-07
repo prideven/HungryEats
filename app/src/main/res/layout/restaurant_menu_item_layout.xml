@@ -56,4 +56,7 @@
         android:scaleType="centerCrop"
        tools:src="@drawable/frenchfries" />
 
+
+
+
 </RelativeLayout>

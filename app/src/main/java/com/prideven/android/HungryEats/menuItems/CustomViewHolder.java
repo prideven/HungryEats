@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.prideven.android.hungryeats.MenuItem;
+import com.prideven.android.hungryeats.GetCartValuesListener;
 import com.prideven.android.hungryeats.R;
 
 /**
@@ -18,16 +18,24 @@ public class CustomViewHolder extends RecyclerView.ViewHolder {
         super(v);
     }
 
-    public void setData(MenuItem menuItem) {
+    public void setData(com.prideven.android.hungryeats.MenuItem menuItem, GetCartValuesListener listener) {
 
-        TextView  cal = itemView.findViewById(R.id.cal);
-        TextView price =itemView.findViewById(R.id.price);
-        TextView item_name =itemView.findViewById(R.id.item_name);
-        ImageView image =itemView.findViewById(R.id.image);
-        ImageView add_image =itemView.findViewById(R.id.add);
+        TextView cal = itemView.findViewById(R.id.cal);
+        TextView price = itemView.findViewById(R.id.price);
+        TextView item_name = itemView.findViewById(R.id.item_name);
+        ImageView image = itemView.findViewById(R.id.image);
+        ImageView add_image = itemView.findViewById(R.id.add);
 
         cal.setText(menuItem.cal);
-        price.setText(menuItem.price );
+        price.setText(menuItem.price);
         item_name.setText(menuItem.item_name);
+
+        add_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(menuItem.item_name,menuItem.price);
+            }
+        });
+
     }
 }

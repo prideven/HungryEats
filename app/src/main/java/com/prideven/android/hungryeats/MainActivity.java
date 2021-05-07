@@ -6,10 +6,17 @@ import android.view.Menu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
+
+    public String name;
+    public String price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
+                    .replace(R.id.container, RestaurantFragment.newInstance())
                     .commit();
         }
     }
@@ -37,6 +44,21 @@ public class MainActivity extends AppCompatActivity {
             logout();
             return true;
         }
+
+        if (id == R.id.action_cart) {
+
+                CartFragment cartFragment = CartFragment.newInstance(name,price);
+                FragmentManager fragmentManager = Objects.requireNonNull(this.getSupportFragmentManager());
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, cartFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+        }
+
+
+
+
+
         return super.onOptionsItemSelected(item);
     }
     private void logout() {

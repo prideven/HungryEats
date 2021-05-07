@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.view.menu.MenuAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,11 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.prideven.android.hungryeats.CartFragment;
+import com.prideven.android.hungryeats.GetCartValuesListener;
 import com.prideven.android.hungryeats.R;
 import com.prideven.android.hungryeats.databinding.MenuFragmentBinding;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Objects;
 
 public class MenuFragment extends Fragment {
 
@@ -54,7 +59,19 @@ public class MenuFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.menu_fragment, container, false);
         RecyclerView rv = mBinding.menuItems;
-        com.prideven.android.hungryeats.CustomAdapter ma = new com.prideven.android.hungryeats.CustomAdapter(dataSet());
+        CustomAdapter ma = new CustomAdapter(dataSet(),
+                new GetCartValuesListener() {
+                    public void onItemClick(String itemName, String price) {
+                        CartFragment cartFragment = CartFragment.newInstance(itemName, price);
+                        FragmentManager fragmentManager =
+                                Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.container, cartFragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    }
+                }
+        );
         rv.setAdapter(ma);
         rv.setLayoutManager(new LinearLayoutManager(requireContext()));
         return mBinding.getRoot();

@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MainFragment extends Fragment{
+public class RestaurantFragment extends Fragment{
 
     private com.prideven.android.hungryeats.RestaurantViewModel mViewModel;
     private RestaurantListFileBinding mBinding;
@@ -38,8 +38,8 @@ public class MainFragment extends Fragment{
     private Double lng;
     final String zip = "95192";
     public int id;
-    public static MainFragment newInstance() {
-        return new MainFragment();
+    public static RestaurantFragment newInstance() {
+        return new RestaurantFragment();
     }
     @Nullable
     @Override
