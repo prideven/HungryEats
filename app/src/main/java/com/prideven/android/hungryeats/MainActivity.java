@@ -6,12 +6,8 @@ import android.view.Menu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,18 +42,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_cart) {
-
-                CartFragment cartFragment = CartFragment.newInstance(name,price);
-                FragmentManager fragmentManager = Objects.requireNonNull(this.getSupportFragmentManager());
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, cartFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, CartFragment.newInstance())
+                        .commit();
         }
-
-
-
-
 
         return super.onOptionsItemSelected(item);
     }
