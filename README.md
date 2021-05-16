@@ -8,7 +8,7 @@ Is an android app for online food delivery, making it it easy to deliver food at
 ## API to fecth List of Restaurants
 Will display the list of restaurants avalible to deliever. 
 <div>
-<img src='screenshots/restaurant.png' width = 150 height = 300>&nbsp; &nbsp;
+<img src='screenshots/menu.png' width = 150 height = 300>&nbsp; &nbsp;
 </div>
 
 
@@ -16,7 +16,7 @@ Will display the list of restaurants avalible to deliever.
 Will display the list of menu for the restaurant selected.
 
 <div>
-<img src='screenshots/menu.png' width = 150 height = 300>&nbsp; &nbsp;
+<img src='screenshots/restaurant.png' width = 150 height = 300>&nbsp; &nbsp;
 </div>
 
 
