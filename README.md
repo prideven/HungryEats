@@ -2,7 +2,7 @@
 Is an android app for online food delivery, making it it easy to deliver food at your doorstep
 
 
-## Detail Documentation of the Assignment:
+## [Detail Documentation of the Assignment](https://github.com/prideven/HungryEats/blob/Assignment2_Topic6/CMPE%20277_Assignment2.docx)
 
 
 ## API to fecth List of Restaurants
@@ -21,4 +21,4 @@ Will display the list of menu for the restaurant selected.
 
 
 ## Demo Video
-(https://www.youtube.com/watch?v=Z59qJvDN-Yk&ab_channel=PriyankaDevendran)
+https://youtu.be/SW3WTwDXbjY
