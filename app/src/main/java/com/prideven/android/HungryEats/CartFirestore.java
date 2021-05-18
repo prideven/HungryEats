@@ -8,6 +8,7 @@ public class CartFirestore {
     public String itemPrice;
     public String userId;
     public String image;
+    public String id;
 
     public CartFirestore() {
         // empty constructor
@@ -55,5 +56,9 @@ public class CartFirestore {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public void setId(String id) {this.id=id;}
+
+    public String getId(){return id;}
 
 }

@@ -178,6 +178,8 @@ public class MenuFragment extends Fragment {
         CollectionReference dbCart = db.collection("CartDetails");
 
         // adding our data to our cart object class.
+
+
         CartFirestore cartFirestore = new CartFirestore(itemName, itemPrice, userId,image);
 
         // below method is use to add data to Firebase Firestore.

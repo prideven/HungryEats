@@ -18,10 +18,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     // creating variables for our ArrayList and context
     private ArrayList<CartFirestore> cartArrayList;
     public CartRvBinding cartRvBinding;
+    public CartListener cartListener;
 
     // creating constructor for our adapter class
-    public CartAdapter(ArrayList<CartFirestore> cartArrayList) {
+    public CartAdapter(ArrayList<CartFirestore> cartArrayList, CartListener cartListener) {
         this.cartArrayList = cartArrayList;
+        this.cartListener=cartListener;
     }
 
     @NonNull
@@ -46,10 +48,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 .load(cart.getImage())
                 .centerCrop()
                 .into((holder.cartRvBinding.imageId));
-//        holder.bindData(position, postion -> {
-//            cartArrayList.remove(position);
-//            notifyItemRemoved(position);
-//        });
+        holder.bindData(position, postion -> {
+            cartListener.onItemClick(postion);
+        });
     }
 
     @Override
@@ -67,7 +68,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         }
 
         public void bindData(int position, CartListener cartListener) {
-            cartRvBinding.delete.setOnClickListener(v -> cartListener.onItemClick(position));
+            cartRvBinding.delete.setOnClickListener(v ->
+                    cartListener.onItemClick(position)
+            );
         }
     }
 }

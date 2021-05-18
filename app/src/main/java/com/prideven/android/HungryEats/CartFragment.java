@@ -96,7 +96,19 @@ public class CartFragment extends Fragment {
         cartRV.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         // adding our array list to our recycler view adapter class.
-        cartAdapter = new CartAdapter(cartArrayList);
+
+//        cartAdapter = new CartAdapter(cartArrayList);
+
+        cartAdapter = new CartAdapter(cartArrayList,new CartListener(){
+            public void onItemClick(int pos) {
+                if(!cartArrayList.isEmpty()  && pos < cartArrayList.size()) {
+                    findnewTotal(pos);
+                    cartArrayList.remove(pos);
+                    cartAdapter.notifyItemRemoved(pos);
+                }
+                Toast.makeText(getContext(), "Item deleted from cart", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // setting adapter to our recycler view.
         cartRV.setAdapter(cartAdapter);
@@ -116,9 +128,11 @@ public class CartFragment extends Fragment {
                             // our data in a list.
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for (DocumentSnapshot d : list) {
+                                ;
                                 // after getting this list we are passing
                                 // that list to our object class.
                                 CartFirestore c = d.toObject(CartFirestore.class);
+                                c.setId(d.getId());
                                 // and we will pass this object class
                                 // inside our arraylist which we have
                                 // created for recycler view.
@@ -165,7 +179,7 @@ public class CartFragment extends Fragment {
 
     }
 
-    private void deleteItem(String userID) {
+    private void deleteItem(int pos) {
 
             // below line is for getting the collection
             // where we are storing our courses.
@@ -173,7 +187,7 @@ public class CartFragment extends Fragment {
                     // after that we are getting the document
                     // which we have to delete.
 
-                            document(userID).
+                            document(itemName).
 
                     // after passing the document id we are calling
                     // delete method to delete this document.
@@ -188,13 +202,13 @@ public class CartFragment extends Fragment {
                             if (task.isSuccessful()) {
                                 // this method is called when the task is success
                                 // after deleting we are starting our MainActivity.
-                                Toast.makeText(getContext(), "Course has been deleted from Databse.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Item has been deleted from cart.", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getContext(), CartFragment.class);
                                 startActivity(i);
                             } else {
                                 // if the delete operation is failed
                                 // we are displaying a toast message.
-                                Toast.makeText(getContext(), "Fail to delete the course. ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Fail to delete the item. ", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -209,6 +223,13 @@ public class CartFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+
+    public void findnewTotal(int pos){
+        String val=cartArrayList.get(pos).getItemPrice();
+        int new_val=Integer.parseInt(val.replace("$",""));
+        int new_total=total-new_val;
+        addToCartBinding.tPrice.setText("$"+new_total);
+    }
 
 
 }
