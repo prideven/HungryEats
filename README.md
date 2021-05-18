@@ -64,7 +64,7 @@ The user can view the restaurant details such as the ratings and also view the m
 The CartFragment are stored using the google firebase, once the user selected the cart icon present on the toolbar the user can view all the list of items added in the cart. The user can remove any of the items added , can clear the entire cart or proceed to checkout to the place the order.
 
 
-Android Architecture Diagram
+## Android Architecture Diagram
 
 
 ![](screenshots/AndroidDiagram.png)
