@@ -123,7 +123,7 @@ public class MenuFragment extends Fragment {
             "\n" +
             "    {\n" +
             "      \"item_name\": \"BBQ  CHEESEBURGER\",\n" +
-            "      \"cal\": \"220cal\",\n" +
+            "      \"cal\": \"480cal\",\n" +
             "      \"price\": \"$18\",\n" +
             "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/7fbbe5c9-a998-47a5-9476-19625d9900c5_Cheeseburger-optimized.png?auto=compress%2Cformat&w=1000&h=774\"\n" +
             "    },\n" +
@@ -137,7 +137,7 @@ public class MenuFragment extends Fragment {
             "\n" +
             "    {\n" +
             "      \"item_name\": \"FRIED SHRIMP\",\n" +
-            "      \"cal\": \"520cal\",\n" +
+            "      \"cal\": \"380cal\",\n" +
             "      \"price\": \"$18\",\n" +
             "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/25a8b8d0-78fa-4adc-980e-545f2b870a9f_Fried_Shrimp-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    },\n" +
@@ -158,14 +158,14 @@ public class MenuFragment extends Fragment {
             "\n" +
             "    {\n" +
             "      \"item_name\": \"CHICKEN KATSU\",\n" +
-            "      \"cal\": \"420cal\",\n" +
+            "      \"cal\": \"320cal\",\n" +
             "      \"price\": \"$12\",\n" +
             "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/91ce129b-21cc-4c8f-b015-2f2eac96e875_Chicken_Katsu-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    },\n" +
             "\n" +
             "    {\n" +
             "      \"item_name\": \"SEAFOOD COMBO\",\n" +
-            "      \"cal\": \"820cal\",\n" +
+            "      \"cal\": \"610cal\",\n" +
             "      \"price\": \"$24\",\n" +
             "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/0149c43f-1242-47da-83e5-ffce88d48b58_Seafood_Combo_BBQ_Chicken-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    }\n" +
