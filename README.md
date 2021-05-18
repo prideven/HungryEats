@@ -3,22 +3,32 @@ Is an Android application that provides a platform for online delivery of food a
 Due to pandemic food delivery applications has proven to be more important for both customers as well as business owners. For customers it’s one of the easiest way to satisfy the food cravings while staying safe at home and for many business owners it helps the business to survive by providing online delivery option.
 
 
+                           
+
+## Demo Video
+(https://www.youtube.com/watch?v=Z59qJvDN-Yk&ab_channel=PriyankaDevendran)
+
+
 ## HungryEats Icon
 
-![](screenshots/icon.png')
+
+<div>
+<img src='screenshots/icon.png' width = 100 height = 100>&nbsp; &nbsp;
+</div>
+         
 
 
 
 ## Overview Architecture diagram
 
-![](screenshots/Adiagram.png')
+![](screenshots/Adiagram.png)
 
 
 
 
 ## Functionalities implemented
 
-![](screenshots/Funcblock.png')
+![](screenshots/Funcblock.png)
 
 
 ## Details of the Functionality included:
@@ -131,12 +141,9 @@ Will display the list of cart items added by the user.
                                
 ### For storing User details
                              
- ![](screenshots/Authentication.png')
+ ![](screenshots/Authentication.png)
  
  ### For storing cart details 
- ![](screenshots/items.png')
+ ![](screenshots/items.png)
                                
-                           
 
-## Demo Video
-(https://www.youtube.com/watch?v=Z59qJvDN-Yk&ab_channel=PriyankaDevendran)
