@@ -5,30 +5,34 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class RestaurantViewModel extends ViewModel {
 
     static final String TAG = RestaurantViewModel.class.getSimpleName();
-
-
     HungryEatsApplication hungryEatsApplication = HungryEatsApplication.getInstance();
-
 
     // Create a LiveData with a String
     private MutableLiveData<List<EatsRestaurantsResponseItem>> eatsRestaurantResponse;
 
     public MutableLiveData<List<EatsRestaurantsResponseItem>> getRestaurantDetails() {
         if (eatsRestaurantResponse == null) {
-            eatsRestaurantResponse = new MutableLiveData<List<EatsRestaurantsResponseItem>>();
+            eatsRestaurantResponse = new MutableLiveData<>();
         }
         return eatsRestaurantResponse;
+    }
+
+
+    public void fetchRestaurantList(Callback<EatsRestaurantsResponse> responseCallback, double lat, double lng) {
+        Retrofit retrofit=hungryEatsApplication.getRetrofitInstance();
+        EatsRestaurantWebService eatsRestaurantsWebService = retrofit.create(EatsRestaurantWebService.class);
+        Call<EatsRestaurantsResponse> call = eatsRestaurantsWebService.getRestaurants(lat,lng);
+        call.enqueue(responseCallback);
     }
 
     public void callRestaurantDataRepo(double lat,double lng) {
@@ -45,7 +49,7 @@ public class RestaurantViewModel extends ViewModel {
                 Log.e(TAG, throwable.toString());
             }
         };
-        hungryEatsApplication.fetchRestaurantList(object,lat,lng);
+        fetchRestaurantList(object,lat,lng);
     }
 }
 

@@ -4,8 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 
@@ -18,12 +16,7 @@ public class RestaurantActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mcd_items);
-
-        RecyclerView rv = findViewById(R.id.menu_items);
-        com.prideven.android.hungryeats.CustomAdapter ca = new com.prideven.android.hungryeats.CustomAdapter(dataSet());
-        rv.setAdapter(ca);
-        rv.setLayoutManager(new LinearLayoutManager(this));
+        setContentView(R.layout.menu_fragment);
     }
 
     public List<com.prideven.android.hungryeats.MenuItem> dataSet() {
