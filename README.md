@@ -67,15 +67,14 @@ The CartFragment are stored using the google firebase, once the user selected th
 Android Architecture Diagram
 
 
-<img src='screenshots/AndroidDiagram'
-
+![](screenshots/AndroidDiagram.png)
 
 
 
 ## Features Implemented
    
      
-![](screenshots/FeaBlock2.png')
+![](screenshots/FeaBlock2.png)
 
 
 ## Details of the features implemented
