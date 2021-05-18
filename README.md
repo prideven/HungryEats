@@ -11,13 +11,14 @@ Due to pandemic food delivery applications has proven to be more important for b
 
 ## Overview Architecture diagram
 
-![](Adiagram/icon.png')
+![](screenshots/Adiagram.png')
 
 
 
-Functionalities implemented:
 
-![](Funcblock/icon.png')
+## Functionalities implemented
+
+![](screenshots/Funcblock.png')
 
 
 ## Details of the Functionality included:
@@ -99,7 +100,7 @@ Is the home screen displayed for the users launching the app.
  ## Login/SignUp
 Is the first page displayed for the users logging in.
 <div>
-<img src='screenshots/welcome.png' width = 150 height = 300>&nbsp; &nbsp;
+<img src='screenshots/login.png' width = 150 height = 300>&nbsp; &nbsp;
 </div>
 
 
