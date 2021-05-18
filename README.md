@@ -91,6 +91,12 @@ Android Architecture Diagram
 ## App Screenshot
 
 ## Welcome
+Is the home screen displayed for the users launching the app.
+<div>
+<img src='screenshots/welcome.png' width = 150 height = 300>&nbsp; &nbsp;
+</div>
+                                  
+ ## Login/SignUp
 Is the first page displayed for the users logging in.
 <div>
 <img src='screenshots/welcome.png' width = 150 height = 300>&nbsp; &nbsp;
@@ -98,9 +104,9 @@ Is the first page displayed for the users logging in.
 
 
 ## List of Restaurants
-Will display the list of restaurants avalible to deliever. 
+Will display the list of nearby restaurants from the pincode provided. 
 <div>
-<img src='screenshots/restaurant.png' width = 150 height = 300>&nbsp; &nbsp;
+<img src='screenshots/restaurant1.png' width = 150 height = 300>&nbsp; &nbsp;
 </div>
 
 
@@ -108,9 +114,28 @@ Will display the list of restaurants avalible to deliever.
 Will display the list of menu for the restaurant selected.
 
 <div>
-<img src='screenshots/menu.png' width = 150 height = 300>&nbsp; &nbsp;
+<img src='screenshots/menu1.png' width = 150 height = 300>&nbsp; &nbsp;
 </div>
+                          
+                                
+## Cart List
+Will display the list of cart items added by the user.
 
+<div>
+<img src='screenshots/cart.png' width = 150 height = 300>&nbsp; &nbsp;
+</div>
+                                
+                                                             
+## Screenshot of Firebase Configuration
+                               
+### For storing User details
+                             
+ ![](screenshots/Authentication.png')
+ 
+ ### For storing cart details 
+ ![](screenshots/items.png')
+                               
+                           
 
 ## Demo Video
 (https://www.youtube.com/watch?v=Z59qJvDN-Yk&ab_channel=PriyankaDevendran)
