@@ -5,20 +5,26 @@ Due to pandemic food delivery applications has proven to be more important for b
 
 ## HungryEats Icon
 
-![](screenshots/icon.png')
+![](screenshots/icon.png)
 
 
+
+
+
+
+## Demo Video
+(https://www.youtube.com/watch?v=Z59qJvDN-Yk&ab_channel=PriyankaDevendran)
 
 ## Overview Architecture diagram
 
-![](screenshots/Adiagram.png')
+![](screenshots/Adiagram.png)
 
 
 
 
 ## Functionalities implemented
 
-![](screenshots/Funcblock.png')
+![](screenshots/Funcblock.png)
 
 
 ## Details of the Functionality included:
@@ -131,12 +137,10 @@ Will display the list of cart items added by the user.
                                
 ### For storing User details
                              
- ![](screenshots/Authentication.png')
+ ![](screenshots/Authentication.png)
  
  ### For storing cart details 
- ![](screenshots/items.png')
+ ![](screenshots/items.png)
                                
                            
 
-## Demo Video
-(https://www.youtube.com/watch?v=Z59qJvDN-Yk&ab_channel=PriyankaDevendran)
