@@ -48,6 +48,8 @@ public class CartFragment extends Fragment {
     private CartAdapter cartAdapter;
     public FirebaseFirestore db;
     public int total=0;
+    public int val;
+    public int new_val;
     public CartRvBinding cartRvBinding;
 
 
@@ -102,9 +104,9 @@ public class CartFragment extends Fragment {
         cartAdapter = new CartAdapter(cartArrayList,new CartListener(){
             public void onItemClick(int pos) {
                 if(!cartArrayList.isEmpty()  && pos < cartArrayList.size()) {
-                    findnewTotal(pos);
                     cartArrayList.remove(pos);
-                    cartAdapter.notifyItemRemoved(pos);
+                    findnewTotal(pos);
+                    cartAdapter.notifyDataSetChanged();
                 }
                 Toast.makeText(getContext(), "Item deleted from cart", Toast.LENGTH_SHORT).show();
             }
@@ -225,10 +227,14 @@ public class CartFragment extends Fragment {
 
 
     public void findnewTotal(int pos){
-        String val=cartArrayList.get(pos).getItemPrice();
-        int new_val=Integer.parseInt(val.replace("$",""));
-        int new_total=total-new_val;
-        addToCartBinding.tPrice.setText("$"+new_total);
+        new_val=0;
+        for (int i = 0; i < cartArrayList.size(); i++){
+             String val1=cartArrayList.get(i).getItemPrice();
+             new_val+=Integer.parseInt(val1.replace("$",""));
+        }
+
+
+        addToCartBinding.tPrice.setText("$"+new_val);
     }
 
 

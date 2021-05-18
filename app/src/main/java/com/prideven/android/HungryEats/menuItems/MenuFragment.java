@@ -65,13 +65,16 @@ public class MenuFragment extends Fragment {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.menu_fragment, container, false);
         RecyclerView rv = mBinding.menuItems;
         db = FirebaseFirestore.getInstance();
-        CustomAdapter ma = new CustomAdapter(dataSet(), new GetCartValuesListener() {
-            public void onItemClick(String itemName, String itemPrice,String image) {
-                userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
-                addDataToFirestore(itemName, itemPrice, userId , image);
-                Toast.makeText(getContext(), "Item added to cart", Toast.LENGTH_SHORT).show();
-            }
-        });
+        CustomAdapter ma = new CustomAdapter(dataSet(),
+                new GetCartValuesListener() {
+                    public void onItemClick(String itemName, String itemPrice,String image) {
+                        userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        addDataToFirestore(itemName, itemPrice, userId , image);
+                        
+                        Toast.makeText(getContext(), "Item added to cart", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
         rv.setAdapter(ma);
         rv.setLayoutManager(new LinearLayoutManager(requireContext()));
         return mBinding.getRoot();
@@ -140,29 +143,29 @@ public class MenuFragment extends Fragment {
             "    },\n" +
             "\n" +
             "    {\n" +
-            "      \"item_name\": \"KALUA PORK WITH CABBAGE\",\n" +
-            "      \"cal\": \"920cal\",\n" +
+            "      \"item_name\": \"KALUA PORK\",\n" +
+            "      \"cal\": \"620cal\",\n" +
             "      \"price\": \"$19\",\n" +
             "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/02c2abca-f9d9-4b2c-8c3d-e3bd14271b28_Kalua_Pork_and_Cabbage-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    },\n" +
             "\n" +
             "    {\n" +
             "      \"item_name\": \"LOCO MOCO\",\n" +
-            "      \"cal\": \"220cal\",\n" +
+            "      \"cal\": \"420cal\",\n" +
             "      \"price\": \"$17\",\n" +
             "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/8540b0dc-0f63-408c-bfba-eeb26399c374_Loco_Moco-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    },\n" +
             "\n" +
             "    {\n" +
             "      \"item_name\": \"CHICKEN KATSU\",\n" +
-            "      \"cal\": \"320cal\",\n" +
+            "      \"cal\": \"420cal\",\n" +
             "      \"price\": \"$12\",\n" +
             "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/91ce129b-21cc-4c8f-b015-2f2eac96e875_Chicken_Katsu-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    },\n" +
             "\n" +
             "    {\n" +
             "      \"item_name\": \"SEAFOOD COMBO\",\n" +
-            "      \"cal\": \"920cal\",\n" +
+            "      \"cal\": \"820cal\",\n" +
             "      \"price\": \"$24\",\n" +
             "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/0149c43f-1242-47da-83e5-ffce88d48b58_Seafood_Combo_BBQ_Chicken-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    }\n" +
@@ -178,8 +181,6 @@ public class MenuFragment extends Fragment {
         CollectionReference dbCart = db.collection("CartDetails");
 
         // adding our data to our cart object class.
-
-
         CartFirestore cartFirestore = new CartFirestore(itemName, itemPrice, userId,image);
 
         // below method is use to add data to Firebase Firestore.
