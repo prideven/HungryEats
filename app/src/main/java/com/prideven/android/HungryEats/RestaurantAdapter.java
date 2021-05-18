@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.prideven.android.hungryeats.databinding.RestaurantLayoutBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantViewHolder>  {
@@ -18,7 +17,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantViewHolder
     private RestaurantLayoutBinding rbinding;
     private GetRestaurantIDListener listener;
 
-    List<EatsRestaurantsResponseItem> items = new ArrayList<>();
+    List<EatsRestaurantsResponseItem> items;
 
     public RestaurantAdapter(List<EatsRestaurantsResponseItem> dataSet, GetRestaurantIDListener listener) {
         this.items = dataSet;

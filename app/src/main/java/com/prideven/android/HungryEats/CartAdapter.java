@@ -2,12 +2,12 @@ package com.prideven.android.hungryeats;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.prideven.android.hungryeats.databinding.CartRvBinding;
 
 import java.util.ArrayList;
@@ -40,8 +40,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull CartAdapter.ViewHolder holder, int position) {
         // setting data to our text views from our modal class.
         CartFirestore cart = cartArrayList.get(position);
-        holder.itemName.setText(cart.getItemName());
-        holder.itemPrice.setText(cart.getItemPrice());
+        holder.cartRvBinding.itemName.setText(cart.getItemName());
+        holder.cartRvBinding.itemPrice.setText(cart.getItemPrice());
+        Glide.with(cartRvBinding.getRoot().getContext())
+                .load(cart.getImage())
+                .centerCrop()
+                .into((holder.cartRvBinding.imageId));
+//        holder.bindData(position, postion -> {
+//            cartArrayList.remove(position);
+//            notifyItemRemoved(position);
+//        });
     }
 
     @Override
@@ -52,14 +60,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder {
         // creating variables for our text views.
-        private final TextView itemName;
-        private final TextView itemPrice;
-
+        CartRvBinding cartRvBinding;
         public ViewHolder(@NonNull CartRvBinding cartRvBinding) {
             super(cartRvBinding.getRoot());
-            // initializing our text views.
-            itemName = cartRvBinding.itemName;
-            itemPrice = cartRvBinding.itemPrice;
+            this.cartRvBinding = cartRvBinding;
+        }
+
+        public void bindData(int position, CartListener cartListener) {
+            cartRvBinding.delete.setOnClickListener(v -> cartListener.onItemClick(position));
         }
     }
 }

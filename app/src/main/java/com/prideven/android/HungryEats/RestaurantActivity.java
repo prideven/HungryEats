@@ -17,12 +17,6 @@ public class RestaurantActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_fragment);
-//        GetCartValuesListener listener = null;
-//
-//        RecyclerView rv = findViewById(R.id.menu_items);
-//        CustomAdapter ca = new CustomAdapter(dataSet(),GetCartValuesListener listener);
-//        rv.setAdapter(ca);
-//        rv.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public List<com.prideven.android.hungryeats.MenuItem> dataSet() {

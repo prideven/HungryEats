@@ -4,15 +4,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.prideven.android.hungryeats.GetCartValuesListener;
 import com.prideven.android.hungryeats.MenuItem;
 import com.prideven.android.hungryeats.R;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
     private static final String TAG = "CustomAdapter";

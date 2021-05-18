@@ -33,7 +33,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
         rbinding = DataBindingUtil.setContentView(this, R.layout.register);
-
         email = rbinding.userMail;
         password = rbinding.password;
         registerButton = rbinding.signup;
@@ -80,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), LoginAndRegisterActivity.class));
             }
         });
+
 
         if(firebaseAuth.getCurrentUser()!=null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));

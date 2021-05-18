@@ -17,12 +17,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.main_activity);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, RestaurantFragment.newInstance())
                     .commit();
         }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_cart) {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, CartFragment.newInstance())
-                        .commit();
+                        .addToBackStack(null).commit();
         }
 
         return super.onOptionsItemSelected(item);
@@ -55,5 +59,10 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

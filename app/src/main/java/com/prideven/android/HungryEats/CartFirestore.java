@@ -4,7 +4,10 @@ package com.prideven.android.hungryeats;
 public class CartFirestore {
 
     // variables for storing our data.
-    public String itemName, itemPrice, userId;
+    public String itemName;
+    public String itemPrice;
+    public String userId;
+    public String image;
 
     public CartFirestore() {
         // empty constructor
@@ -12,10 +15,11 @@ public class CartFirestore {
     }
 
     // Constructor for all variables.
-    public CartFirestore(String itemName, String itemPrice, String userId) {
+    public CartFirestore(String itemName, String itemPrice, String userId, String image) {
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.userId = userId;
+        this.image=image;
     }
 
     // getter methods for all variables.
@@ -42,6 +46,14 @@ public class CartFirestore {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }

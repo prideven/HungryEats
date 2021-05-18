@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class RestaurantFragment extends Fragment{
+public class RestaurantFragment extends Fragment {
 
     private com.prideven.android.hungryeats.RestaurantViewModel mViewModel;
     private RestaurantListFileBinding mBinding;
@@ -38,9 +38,12 @@ public class RestaurantFragment extends Fragment{
     private Double lng;
     final String zip = "95192";
     public int id;
+    String message;
+
     public static RestaurantFragment newInstance() {
         return new RestaurantFragment();
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -49,14 +52,14 @@ public class RestaurantFragment extends Fragment{
         RecyclerView rv = mBinding.restaurantList;
         List<EatsRestaurantsResponseItem> items = new ArrayList<>();
         ra = new com.prideven.android.hungryeats.RestaurantAdapter(items,
-                new GetRestaurantIDListener(){
-                    public void onItemClick(int Id){
+                new GetRestaurantIDListener() {
+                    public void onItemClick(int Id) {
                         MenuFragment menuFragment = MenuFragment.newInstance(Id);
                         FragmentManager fragmentManager =
                                 Objects.requireNonNull(getActivity()).getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                         fragmentTransaction.replace(R.id.container, menuFragment);
-                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.addToBackStack(RestaurantFragment.class.getName());
                         fragmentTransaction.commit();
                     }
                 });
@@ -64,7 +67,10 @@ public class RestaurantFragment extends Fragment{
         rv.setAdapter(ra);
         rv.setLayoutManager(new LinearLayoutManager(requireContext()));
         return mBinding.getRoot();
+
+
     }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -82,7 +88,7 @@ public class RestaurantFragment extends Fragment{
                 lat = address.getLatitude();
                 lng = address.getLongitude();
 
-                Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
+
             } else {
                 // Display appropriate message when Geocoder services are not available
                 Toast.makeText(getContext(), "Unable to geocode zipcode", Toast.LENGTH_LONG).show();
@@ -91,19 +97,38 @@ public class RestaurantFragment extends Fragment{
             // handle exception
         }
         mViewModel = new ViewModelProvider(this).get(com.prideven.android.hungryeats.RestaurantViewModel.class);
-        mViewModel.getRestaurantDetails().observe(getViewLifecycleOwner(), listOfRestaurants ->{
+        mViewModel.getRestaurantDetails().observe(getViewLifecycleOwner(), listOfRestaurants -> {
+
             ra.setData(listOfRestaurants);
-            mViewModel.callRestaurantDataRepo(lat,lng);
+
         });
         mBinding.search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mViewModel.callRestaurantDataRepo(lat,lng);
+                mViewModel.callRestaurantDataRepo(lat, lng);
+
             }
         });
+
+
     }
 
-    public int getID (int id){
+    public int getID(int id) {
         return id;
     }
+
+
+
+
+    public boolean onOptionsItemSelected(@NonNull android.view.MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                getActivity().onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
+
+

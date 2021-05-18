@@ -57,7 +57,6 @@ public class MenuFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -66,14 +65,13 @@ public class MenuFragment extends Fragment {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.menu_fragment, container, false);
         RecyclerView rv = mBinding.menuItems;
         db = FirebaseFirestore.getInstance();
-        CustomAdapter ma = new CustomAdapter(dataSet(),
-                new GetCartValuesListener() {
-                    public void onItemClick(String itemName, String itemPrice) {
-                        userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        addDataToFirestore(itemName, itemPrice, userId);
-                    }
-                }
-        );
+        CustomAdapter ma = new CustomAdapter(dataSet(), new GetCartValuesListener() {
+            public void onItemClick(String itemName, String itemPrice,String image) {
+                userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
+                addDataToFirestore(itemName, itemPrice, userId , image);
+                Toast.makeText(getContext(), "Item added to cart", Toast.LENGTH_SHORT).show();
+            }
+        });
         rv.setAdapter(ma);
         rv.setLayoutManager(new LinearLayoutManager(requireContext()));
         return mBinding.getRoot();
@@ -121,74 +119,71 @@ public class MenuFragment extends Fragment {
             "  \"menu_item\": [\n" +
             "\n" +
             "    {\n" +
-            "      \"item_name\": \"French Fries\",\n" +
+            "      \"item_name\": \"BBQ  CHEESEBURGER\",\n" +
             "      \"cal\": \"220cal\",\n" +
-            "      \"price\": \"$8\",\n" +
-            "      \"image\": \"https://www.rd.com/wp-content/uploads/2018/10/shutterstock_1033217323-scaled.jpg\"\n" +
+            "      \"price\": \"$18\",\n" +
+            "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/7fbbe5c9-a998-47a5-9476-19625d9900c5_Cheeseburger-optimized.png?auto=compress%2Cformat&w=1000&h=774\"\n" +
             "    },\n" +
             "\n" +
             "    {\n" +
-            "      \"item_name\": \"Veg Burger\",\n" +
+            "      \"item_name\": \"BBQ MIX\",\n" +
             "      \"cal\": \"420cal\",\n" +
             "      \"price\": \"$15\",\n" +
-            "      \"image\": \"https://www.rd.com/wp-content/uploads/2018/10/shutterstock_1033217323-scaled.jpg\"\n" +
+            "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/05ad86c5-f251-4839-a4bd-0b2ec1bbcc55_BBQ_Mix_Short_Ribs-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    },\n" +
             "\n" +
             "    {\n" +
-            "      \"item_name\": \"Chicken Burger\",\n" +
+            "      \"item_name\": \"FRIED SHRIMP\",\n" +
             "      \"cal\": \"520cal\",\n" +
             "      \"price\": \"$18\",\n" +
-            "      \"image\": \"https://www.rd.com/wp-content/uploads/2018/10/shutterstock_1033217323-scaled.jpg\"\n" +
+            "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/25a8b8d0-78fa-4adc-980e-545f2b870a9f_Fried_Shrimp-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    },\n" +
             "\n" +
             "    {\n" +
-            "      \"item_name\": \"Nuggets\",\n" +
+            "      \"item_name\": \"KALUA PORK WITH CABBAGE\",\n" +
             "      \"cal\": \"920cal\",\n" +
             "      \"price\": \"$19\",\n" +
-            "      \"image\": \"https://www.rd.com/wp-content/uploads/2018/10/shutterstock_1033217323-scaled.jpg\"\n" +
+            "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/02c2abca-f9d9-4b2c-8c3d-e3bd14271b28_Kalua_Pork_and_Cabbage-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    },\n" +
             "\n" +
             "    {\n" +
-            "      \"item_name\": \"Coke\",\n" +
+            "      \"item_name\": \"LOCO MOCO\",\n" +
             "      \"cal\": \"220cal\",\n" +
-            "      \"price\": \"$8\",\n" +
-            "      \"image\": \"https://www.rd.com/wp-content/uploads/2018/10/shutterstock_1033217323-scaled.jpg\"\n" +
+            "      \"price\": \"$17\",\n" +
+            "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/8540b0dc-0f63-408c-bfba-eeb26399c374_Loco_Moco-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    },\n" +
             "\n" +
             "    {\n" +
-            "      \"item_name\": \"Egg Burger\",\n" +
+            "      \"item_name\": \"CHICKEN KATSU\",\n" +
             "      \"cal\": \"320cal\",\n" +
             "      \"price\": \"$12\",\n" +
-            "      \"image\": \"https://www.rd.com/wp-content/uploads/2018/10/shutterstock_1033217323-scaled.jpg\"\n" +
+            "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/91ce129b-21cc-4c8f-b015-2f2eac96e875_Chicken_Katsu-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    },\n" +
             "\n" +
             "    {\n" +
-            "      \"item_name\": \"Meals\",\n" +
+            "      \"item_name\": \"SEAFOOD COMBO\",\n" +
             "      \"cal\": \"920cal\",\n" +
-            "      \"price\": \"$22\",\n" +
-            "      \"image\": \"https://www.rd.com/wp-content/uploads/2018/10/shutterstock_1033217323-scaled.jpg\"\n" +
+            "      \"price\": \"$24\",\n" +
+            "      \"image\": \"https://images.prismic.io/hawaiianbarbecue/0149c43f-1242-47da-83e5-ffce88d48b58_Seafood_Combo_BBQ_Chicken-optimized.png?auto=compress%2Cformat&w=1000&h=775\"\n" +
             "    }\n" +
             "  ]\n" +
             "}\n" +
             "\n";
 
 
-    private void addDataToFirestore(String itemName, String itemPrice, String userId) {
+    private void addDataToFirestore(String itemName, String itemPrice, String userId, String image) {
 
         // creating a collection reference
         // for our Firebase Firetore database.
         CollectionReference dbCart = db.collection("CartDetails");
 
         // adding our data to our cart object class.
-        CartFirestore cartFirestore = new CartFirestore(itemName, itemPrice, userId);
+        CartFirestore cartFirestore = new CartFirestore(itemName, itemPrice, userId,image);
 
         // below method is use to add data to Firebase Firestore.
         dbCart.add(cartFirestore).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
-                // after the data addition is successful
-                // we are displaying a success toast message.
-                Toast.makeText(getActivity(), "Your item has been added to Firebase Firestore", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -199,6 +194,15 @@ public class MenuFragment extends Fragment {
             }
         });
 
+    }
+    public boolean onOptionsItemSelected(@NonNull android.view.MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                getActivity().onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 

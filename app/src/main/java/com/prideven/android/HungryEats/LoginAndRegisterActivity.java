@@ -53,7 +53,7 @@ public class LoginAndRegisterActivity extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         } else {
-                            Toast.makeText(getApplicationContext(), "E-mail or password is wrong", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "E-mail or password is wrong", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

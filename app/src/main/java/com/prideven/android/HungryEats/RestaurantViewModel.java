@@ -22,7 +22,7 @@ public class RestaurantViewModel extends ViewModel {
 
     public MutableLiveData<List<EatsRestaurantsResponseItem>> getRestaurantDetails() {
         if (eatsRestaurantResponse == null) {
-            eatsRestaurantResponse = new MutableLiveData<List<EatsRestaurantsResponseItem>>();
+            eatsRestaurantResponse = new MutableLiveData<>();
         }
         return eatsRestaurantResponse;
     }
