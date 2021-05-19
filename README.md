@@ -6,8 +6,8 @@ Due to pandemic food delivery applications has proven to be more important for b
                            
 
 ## Demo Video
-(https://www.youtube.com/watch?v=Z59qJvDN-Yk&ab_channel=PriyankaDevendran)
 
+https://youtu.be/1kdlw0pi8L4
 
 ## HungryEats Icon
 
