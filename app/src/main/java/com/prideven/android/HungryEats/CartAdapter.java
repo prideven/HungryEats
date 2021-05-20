@@ -42,10 +42,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull CartAdapter.ViewHolder holder, int position) {
         // setting data to our text views from our modal class.
         CartFirestore cart = cartArrayList.get(position);
-        holder.cartRvBinding.itemName.setText(cart.getItemName());
-        holder.cartRvBinding.itemPrice.setText(cart.getItemPrice());
+        holder.cartRvBinding.itemName.setText(cart.itemName);
+        holder.cartRvBinding.itemPrice.setText(cart.itemPrice);
         Glide.with(cartRvBinding.getRoot().getContext())
-                .load(cart.getImage())
+                .load(cart.image)
                 .centerCrop()
                 .into((holder.cartRvBinding.imageId));
         holder.bindData(position, postion -> {
