@@ -8,7 +8,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RestaurantViewModel : ViewModel() {
-    var hungryEatsApplication = HungryEatsApplication.getInstance()
+    var hungryEatsApplication = HungryEatsApplication.instance
 
     // Create a LiveData with a String
     private var eatsRestaurantResponse: MutableLiveData<List<EatsRestaurantsResponseItem>?>? =

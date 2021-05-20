@@ -1,13 +1,12 @@
-package com.prideven.android.hungryeats;
-
+package com.prideven.android.hungryeats
 
 // import com.fasterxml.jackson.databind.ObjectMapper; // version 2.11.1
 // import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
 /* ObjectMapper om = new ObjectMapper();
 Root root = om.readValue(myJsonString), Root.class); */
-public class MenuItem{
-    public String item_name;
-    public String cal;
-    public String price;
-    public String image;
+class MenuItem {
+    var item_name: String? = null
+    var cal: String? = null
+    var price: String? = null
+    var image: String? = null
 }
